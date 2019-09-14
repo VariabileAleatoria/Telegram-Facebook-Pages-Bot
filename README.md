@@ -2,7 +2,8 @@
 Telegram bot which sends posts from a list of Facebook Pages to a Telegram channel.
 
 ## Usage
-Insert the FB pages you want to get posts from in the pages.csv file.  
+Insert telegram bot token and the channel tag in the **config.py** file
+Insert the FB pages you want to get posts from in the **pages.csv** file.  
 The first line is needed so don't change it.  
 The first column is the **page name**, you can set it to whatever you want but it will be the signature of the posts in every comment.  
 The second name is the **page tag**, this must me the name of the page you can find in the URL with the broswer, this is what the bot actually needs to get posts from the pages.  
