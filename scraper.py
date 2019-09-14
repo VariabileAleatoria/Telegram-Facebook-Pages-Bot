@@ -4,19 +4,16 @@ from datetime import datetime
 import csv
 from tempfile import NamedTemporaryFile
 import shutil
+import config
 
-# insert your bot token here
-TOKEN = ''
+TOKEN = config.TOKEN
 bot = telegram.Bot(TOKEN)
 
-# insert the tag of the channel where you want to send posts after the @
-chat_id = '@'
-
+chat_id = config.chat_id
 
 date_format = '%Y-%m-%d %H:%M:%S'
 
 fields = ['page_name', 'page_tag', 'last_post_used']
-
 
 WAIT_SECONDS = 120
 
@@ -34,10 +31,6 @@ def check():
                 if post['image'] is not None:
                     bot.send_photo(chat_id, post['image'], (post['text'] if post['text'] else '')+ '\n[' + page['page_name'] + ']')
                     if (post['time'] > datetime.strptime(page['last_post_used'], date_format) and temp is None):
-                        temp = post['time']
-                    temp = post['time']
-                        temp = post['time']
-                    temp = post['time']
                         temp = post['time']
                 elif post['text'] is not None:
                     bot.send_message(chat_id, (post['text'] if post['text'] else '')+ '\n[' + page['page_name'] + ']')
