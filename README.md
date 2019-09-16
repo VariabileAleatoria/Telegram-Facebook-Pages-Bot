@@ -11,3 +11,7 @@ I wrote that the bot will _try_ because right now the [module used](https://gith
 
 ## What's working
 Right now the library used only retrieves text posts and photos, so no videos, shares or others
+
+## Module needed
+[python-telegram-bot](https://github.com/python-telegram-bot/python-telegram-bot)  
+[facebook-scraper](https://github.com/kevinzg/facebook-scraper)
