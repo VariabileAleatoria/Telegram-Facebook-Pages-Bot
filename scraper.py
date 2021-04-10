@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import telegram, threading
 from facebook_scraper import get_posts
 from datetime import datetime
@@ -25,7 +27,9 @@ def check():
         csv_writer.writeheader()
         for page in csv_reader:
             temp = None
-            for post in get_posts(page['page_tag'], pages=1):
+            posts = list(get_posts(page['page_tag'], pages=2))
+            posts.sort(key = lambda x: x['time'])
+            for post in posts:
                 if post['time'] <= datetime.strptime(page['last_post_used'], date_format): # post already sent to channel
                     break
                 if post['image'] is not None:
