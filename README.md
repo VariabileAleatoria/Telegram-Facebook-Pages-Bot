@@ -2,6 +2,9 @@
 Telegram bot which scrapes posts from Facebook Pages and sends to a Telegram channel.
 This project has been forked from [VariabileAleatoria/Telegram-Facebook-Pages-Bot](https://github.com/VariabileAleatoria/Telegram-Facebook-Pages-Bot)
 
+## Setting Up Telegram Channel
+
+For this project to work, it must have a Telegram channel, an active bot with admin rights, and an API Token for the bot. 
 
 ## Usage
 
@@ -17,6 +20,11 @@ I wrote that the bot will _try_ because right now the [module used](https://gith
 ## What's working
 Right now the library used only retrieves text posts and photos, so no videos, shares or others
 
-## Module needed
+## Python Modules needed
+
+To install modules in Python:
+`$ pip install python-telegram-bot --upgrade`
+`$ pip install facebook-scraper --upgrade
+
 [python-telegram-bot](https://github.com/python-telegram-bot/python-telegram-bot)  
 [facebook-scraper](https://github.com/kevinzg/facebook-scraper)
