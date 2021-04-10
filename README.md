@@ -22,7 +22,7 @@ For this project to work, it must have a Telegram channel, an active bot with ad
 
 ## Setting Up Server
 
-# Part 1: config.py
+**Part 1: config.py**
 
 1. Open the config.py file in a text editor of your choice.
 
