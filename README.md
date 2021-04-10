@@ -23,8 +23,11 @@ Right now the library used only retrieves text posts and photos, so no videos, s
 ## Python Modules needed
 
 To install modules in Python:
+
 `$ pip install python-telegram-bot --upgrade`
+
 `$ pip install facebook-scraper --upgrade`
+
 
 [python-telegram-bot](https://github.com/python-telegram-bot/python-telegram-bot)  
 [facebook-scraper](https://github.com/kevinzg/facebook-scraper)
