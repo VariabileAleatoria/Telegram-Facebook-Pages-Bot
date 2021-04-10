@@ -2,8 +2,11 @@
 Telegram bot which scrapes posts from Facebook Pages and sends to a Telegram channel.
 This project has been forked from [VariabileAleatoria/Telegram-Facebook-Pages-Bot](https://github.com/VariabileAleatoria/Telegram-Facebook-Pages-Bot)
 
-
 This is also my very first project in github and I am by no means a professional. 
+
+## Concept
+
+From an online privacy perspective, many people choose to forego social media accounts, yet still need to interact with members of Facebook communities. This bot will monitor and send new posts from public Facebook pages to your Telegram account so that you don't need to deal with visiting those pages without an account and all the crap which that entails. This can also be a handy tool to receive updates in Telegram for your important Facebook pages in the event that you have notifications for Facebook turned off.
 
 ## Setting Up Telegram Channel
 
@@ -18,6 +21,11 @@ For this project to work, it must have a Telegram channel, an active bot with ad
 7. That's it. Your Telegram channel and bot are now ready to recieve scraped data from Facebook. Now to configure the server side
 
 ## Setting Up Server
+
+# Part 1: config.py
+
+1. Open the config.py file in a text editor of your choice.
+
 
 Insert telegram bot token and the channel tag in the **config.py** file.  
 
