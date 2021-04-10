@@ -2,9 +2,16 @@
 Telegram bot which scrapes posts from Facebook Pages and sends to a Telegram channel.
 This project has been forked from [VariabileAleatoria/Telegram-Facebook-Pages-Bot](https://github.com/VariabileAleatoria/Telegram-Facebook-Pages-Bot)
 
+
+This is also my very first project in github and I am by no means a professional. 
+
 ## Setting Up Telegram Channel
 
-For this project to work, it must have a Telegram channel, an active bot with admin rights, and an API Token for the bot. 
+For this project to work, it must have a Telegram channel, an active bot with admin rights, and an API Token for the bot. Follow these steps to set up your Channel:
+
+1. Create a new Telegram Channel by selecting the hamburger icon (three lines) in the desktop app or the 'create' pencil in the mobile app and then choose 'New Channel'.
+2. Give your channel a name you will associate with the Facebook pages you are scraping and an icon (or you can add this later).
+3. Using tghe Telegram search function, search for BotFather /[sic]
 
 ## Usage
 
