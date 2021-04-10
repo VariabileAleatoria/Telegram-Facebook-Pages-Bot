@@ -1,5 +1,6 @@
-# Telegram-Facebook-Pages-Bot
-Telegram bot which sends posts from a list of Facebook Pages to a Telegram channel.
+# Facebook-to-Telegram-Bot
+Telegram bot which scrapes posts from Facebook Pages and sends to a Telegram channel.
+This project has been forked from VariabileAleatoria/Telegram-Facebook-Pages-Bot
 
 
 ## Usage
