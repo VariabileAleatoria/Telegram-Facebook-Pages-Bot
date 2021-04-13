@@ -8,9 +8,8 @@ Just run `setup.py`
 
 ### Manual setup
 Insert telegram bot token and the channel tag in the **config.py** file.  
-
-Insert the FB pages you want to get posts from in the **pages.csv** file.  
-The first line is needed so don't change it.  
+Insert the FB pages you want to get posts from in a **pages.csv** file.  
+The first line is needed and must be `page_name,page_tag,last_post_used`.  
 The first column is the **page name**, you can set it to whatever you want but it will be the signature of the posts in every comment.  
 The second name is the **page tag**, this must me the name of the page you can find in the URL with the broswer, this is what the bot actually needs to get posts from the pages.  
 The last column is the **last post used**, that is the timestamp of the last post retrieved by the bot, and will be changed by it at runtime.  
