@@ -31,7 +31,7 @@ def check():
             posts.sort(key = lambda x: x['time'])
             for post in posts:
                 if post['time'] <= datetime.strptime(page['last_post_used'], date_format): # post already sent to channel
-                    break
+                    continue
                 if post['image'] is not None:
                     bot.send_photo(chat_id, post['image'], (post['text'] if post['text'] else '')+ '\n[' + page['page_name'] + ']')
                     if (post['time'] > datetime.strptime(page['last_post_used'], date_format) and temp is None):
