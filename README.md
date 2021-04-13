@@ -3,7 +3,10 @@ Telegram bot which sends posts from a list of Facebook Pages to a Telegram chann
 
 
 ## Usage
+### Automatic setup
+Just run `setup.py`
 
+### Manual setup
 Insert telegram bot token and the channel tag in the **config.py** file.  
 
 Insert the FB pages you want to get posts from in the **pages.csv** file.  
@@ -13,8 +16,6 @@ The second name is the **page tag**, this must me the name of the page you can f
 The last column is the **last post used**, that is the timestamp of the last post retrieved by the bot, and will be changed by it at runtime.  
 **Be careful** to set it properly the first time, because the bot will try to retrieve all the posts which were published after that time.  
 The timestamp format is '%Y-%m-%d %H:%M:%S' (example: 2019-09-07 19:38:29)  
-
-I wrote that the bot will _try_ because right now the [module used](https://github.com/kevinzg/facebook-scraper) only gets the last two or three posts, keep that in mind if your pages posts more than 3 times in two minutes, or just change the check interval accordingly.  
 
 ## What's working
 Right now the library used only retrieves text posts and photos, so no videos, shares or others
