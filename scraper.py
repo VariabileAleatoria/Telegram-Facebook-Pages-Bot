@@ -26,22 +26,19 @@ def check():
         line_count = 0
         csv_writer.writeheader()
         for page in csv_reader:
-            temp = None
             posts = list(get_posts(page['page_tag'], pages=2))
             posts.sort(key = lambda x: x['time'])
             for post in posts:
                 if post['time'] <= datetime.strptime(page['last_post_used'], date_format): # post already sent to channel
                     continue
-                if post['image'] is not None:
-                    bot.send_photo(chat_id, post['image'], (post['text'] if post['text'] else '')+ '\n[' + page['page_name'] + ']')
-                    if (post['time'] > datetime.strptime(page['last_post_used'], date_format) and temp is None):
-                        temp = post['time']
+                if post['images'] is not None:
+                    images = [telegram.InputMediaPhoto(post['images'][0], caption=(post['text'] if post['text'] else '') + '\n[' + page['page_name'] + ']')]
+                    for image in post['images'][1:]:
+                        images.append(telegram.InputMediaPhoto(image))
+                    bot.send_media_group(chat_id, images)
                 elif post['text'] is not None:
                     bot.send_message(chat_id, (post['text'] if post['text'] else '')+ '\n[' + page['page_name'] + ']')
-                    if (post['time'] > datetime.strptime(page['last_post_used'], date_format) and temp is None):
-                        temp = post['time']
-            if temp is not None:
-                page['last_post_used'] = temp
+            page['last_post_used'] = posts[-1]['time']
             row = {'page_name': page['page_name'], 'page_tag': page['page_tag'], 'last_post_used': page['last_post_used']}
             csv_writer.writerow(row)
         shutil.move(tempfile.name, 'pages.csv')
