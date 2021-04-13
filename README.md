@@ -17,7 +17,9 @@ The last column is the **last post used**, that is the timestamp of the last pos
 The timestamp format is '%Y-%m-%d %H:%M:%S' (example: 2019-09-07 19:38:29)  
 
 ## What's working
-Right now the library used only retrieves text posts and photos, so no videos, shares or others
+Right now the bot retrieves text posts and images (with gallery support), shares don't work.
+### TODO
+- video support can be implemented
 
 ## Module needed
 [python-telegram-bot](https://github.com/python-telegram-bot/python-telegram-bot)  
