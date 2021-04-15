@@ -1,5 +1,10 @@
 # Telegram-Facebook-Pages-Bot
-Telegram bot which sends posts from a list of Facebook Pages to a Telegram channel.
+Telegram bot which sends posts from a list of Facebook Pages to a Telegram channel.  
+
+Every post has this structure:  
+[Media] (if present)  
+[Text] (if present)  
+[Signature] (with a name associated to the page by the user)  
 
 
 ## Usage
@@ -17,9 +22,12 @@ The last column is the **last post used**, that is the timestamp of the last pos
 The timestamp format is '%Y-%m-%d %H:%M:%S' (example: 2019-09-07 19:38:29)  
 
 ## What's working
-Right now the bot retrieves text posts and images (with gallery support), shares don't work.
-### TODO
-- video support can be implemented
+- text posts
+- image post *
+- image galleries *
+- video *
+
+Shares don't work.
 
 ## Module needed
 [python-telegram-bot](https://github.com/python-telegram-bot/python-telegram-bot)  
