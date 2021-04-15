@@ -36,6 +36,8 @@ def check():
                     for image in post['images'][1:]:
                         images.append(telegram.InputMediaPhoto(image))
                     bot.send_media_group(chat_id, images)
+                elif post['video'] is not None:
+                    bot.send_video(chat_id, post['video'], caption=(post['text'] if post['text'] else '') + '\n[' + page['page_name'] + ']')
                 elif post['text'] is not None:
                     bot.send_message(chat_id, (post['text'] if post['text'] else '')+ '\n[' + page['page_name'] + ']')
             page['last_post_used'] = posts[-1]['time']
