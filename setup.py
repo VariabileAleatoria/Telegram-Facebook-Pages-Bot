@@ -25,7 +25,7 @@ def setup():
         chat_id = input()
         if chat_id[0] == '@':
             chat_id = chat_id[1:]
-        f.writelines(["TOKEN = "+TOKEN+'\n', "chat_id = @"+ chat_id])
+        f.writelines(["TOKEN = '"+TOKEN+"'"+'\n', "chat_id = '@"+ chat_id +"'"])
     with open('pages.csv','w') as f:
         csv_writer = csv.DictWriter(f, fields)
         csv_writer.writeheader()
