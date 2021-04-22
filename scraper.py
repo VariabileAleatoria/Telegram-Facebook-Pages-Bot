@@ -40,7 +40,10 @@ def check():
                     bot.send_video(chat_id, post['video'], caption=(post['text'] if post['text'] else '') + '\n[' + page['page_name'] + ']')
                 elif post['text'] is not None:
                     bot.send_message(chat_id, (post['text'] if post['text'] else '')+ '\n[' + page['page_name'] + ']')
-            page['last_post_used'] = posts[-1]['time']
+            if len(posts) != 0: 
+                # according to facebook-scraper devs you can get 0 posts if
+                # you get temporarily ip banned for too many requests 
+                page['last_post_used'] = posts[-1]['time']
             row = {'page_name': page['page_name'], 'page_tag': page['page_tag'], 'last_post_used': page['last_post_used']}
             csv_writer.writerow(row)
         shutil.move(tempfile.name, 'pages.csv')
