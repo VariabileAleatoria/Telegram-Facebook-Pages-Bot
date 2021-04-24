@@ -6,6 +6,8 @@ Every post has this structure:
 [Text] (if present)  
 [Signature] (with a name associated to the page by the user)  
 
+# WARNING
+Currently not working because facebook-scraper return wrong time of posts everytime and it's impossibile to sort them.
 
 ## Usage
 ### Automatic setup
