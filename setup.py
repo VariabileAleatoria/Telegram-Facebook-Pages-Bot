@@ -7,7 +7,6 @@ from os import path
 
 date_format = '%Y-%m-%d %H:%M:%S'
 fields = ['page_name', 'page_tag', 'last_post_used']
-now = datetime.now().strftime(date_format)
 
 def setup():
     print("This is the setup process for the bot, please be ready with the info required:")
@@ -36,7 +35,7 @@ def setup():
             row['page_tag'] = input()
             print("What name you want to associate to this page?:")
             row['page_name'] = input()
-            row['last_post_used'] = now
+            row['last_post_used'] = 0
             csv_writer.writerow(row)
             print("Do you want to add another page? [y/n]:")
             while True:
@@ -57,7 +56,7 @@ def add_pages():
             row['page_tag'] = input()
             print("What name you want to associate to this page?:")
             row['page_name'] = input()
-            row['last_post_used'] = now
+            row['last_post_used'] = 0
             csv_writer.writerow(row)
             print("Do you want to add another page? [y/n]:")
             while True:

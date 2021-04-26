@@ -13,11 +13,9 @@ bot = telegram.Bot(TOKEN)
 
 chat_id = config.chat_id
 
-date_format = '%Y-%m-%d %H:%M:%S'
-
 fields = ['page_name', 'page_tag', 'last_post_used']
 
-WAIT_SECONDS = 120
+WAIT_SECONDS = 300
 
 def check():
     with open('pages.csv', mode='r+') as csv_file, NamedTemporaryFile(mode='w', delete=False) as tempfile:
@@ -26,10 +24,10 @@ def check():
         line_count = 0
         csv_writer.writeheader()
         for page in csv_reader:
-            posts = list(get_posts(page['page_tag'], pages=2))
-            posts.sort(key = lambda x: x['time'])
+            posts = list(get_posts(page['page_tag'], pages=2, cookies='cookies.txt'))
+            posts.sort(key = lambda x: x['post_id'])
             for post in posts:
-                if post['time'] <= datetime.strptime(page['last_post_used'], date_format): # post already sent to channel
+                if post['post_id'] <= page['last_post_used']: # post already sent to channel
                     continue
                 if post['images'] is not None:
                     images = [telegram.InputMediaPhoto(post['images'][0], caption=(post['text'] if post['text'] else '') + '\n[' + page['page_name'] + ']')]
@@ -43,7 +41,7 @@ def check():
             if len(posts) != 0: 
                 # according to facebook-scraper devs you can get 0 posts if
                 # you get temporarily ip banned for too many requests 
-                page['last_post_used'] = posts[-1]['time']
+                page['last_post_used'] = posts[-1]['post_id']
             row = {'page_name': page['page_name'], 'page_tag': page['page_tag'], 'last_post_used': page['last_post_used']}
             csv_writer.writerow(row)
         shutil.move(tempfile.name, 'pages.csv')

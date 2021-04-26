@@ -7,7 +7,8 @@ Every post has this structure:
 [Signature] (with a name associated to the page by the user)  
 
 # WARNING
-Currently not working because facebook-scraper return wrong time of posts everytime and it's impossibile to sort them.
+Since facebook-scraper is not able to return reliable timestamp for posts, this bot is currently relying on the assumption that posts ids always grow, if suddenly new posts will start having ids with values smaller then previous ones then the bot will stop forwarding posts to the channel.  
+This check should be probably done in a smarter way, any contribution is much appreciated.
 
 ## Usage
 ### Automatic setup
