@@ -22,7 +22,7 @@ The first column is the **page name**, you can set it to whatever you want but i
 The second name is the **page tag**, this must me the name of the page you can find in the URL with the broswer, this is what the bot actually needs to get posts from the pages.  
 The last column is the **last post used**, that is the id of the last post retrieved by the bot, and will be changed by it at runtime.  
 **Be careful** to set it properly the first time, because the bot will try to retrieve all the posts which were published after that one.    
-Follow [these instructions] to extract cookies and save them as `cookies.txt` in the same folder of `scraper.py`
+Follow [these instructions](https://github.com/kevinzg/facebook-scraper/issues/28#issuecomment-793066983) to extract cookies and save them as `cookies.txt` in the same folder of `scraper.py`
 
 ## What's working
 - text posts
