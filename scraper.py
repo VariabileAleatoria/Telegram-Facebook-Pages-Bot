@@ -7,6 +7,8 @@ import csv
 from tempfile import NamedTemporaryFile
 import shutil
 import config
+import time
+import sys
 
 TOKEN = config.TOKEN
 bot = telegram.Bot(TOKEN)
@@ -24,10 +26,20 @@ def check():
         line_count = 0
         csv_writer.writeheader()
         for page in csv_reader:
-            posts = list(get_posts(page['page_tag'], pages=2, cookies='cookies.txt'))
-            posts.sort(key = lambda x: x['post_id'])
+            try:
+                posts = list(get_posts(page['page_tag'], pages=2, cookies='cookies.txt'))
+            except OSError as err:
+                print("Got an exception while trying to retrieve posts")
+                print(str(err))
+                if err.errno == 101:
+                    print("Network unreachable, waiting 5 minutes")
+                    time.sleep(300)
+                    break
+                else:
+                    sys.exit()
+            posts.sort(key = lambda x: int(x['post_id']))
             for post in posts:
-                if post['post_id'] <= page['last_post_used']: # post already sent to channel
+                if int(post['post_id']) <= int(page['last_post_used']): # post already sent to channel
                     continue
                 if post['images'] is not None:
                     images = [telegram.InputMediaPhoto(post['images'][0], caption=(post['text'] if post['text'] else '') + '\n[' + page['page_name'] + ']')]

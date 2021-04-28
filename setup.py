@@ -4,6 +4,7 @@ import csv
 import os
 from datetime import datetime
 from os import path
+from facebook_scraper import get_posts
 
 date_format = '%Y-%m-%d %H:%M:%S'
 fields = ['page_name', 'page_tag', 'last_post_used']
@@ -13,6 +14,7 @@ def setup():
     print("- Telegram Bot Token can be found in your chat with @BotFather")
     print("- The tag of the channel where the bot is admin")
     print("- The ids of the facebook pages you are interested (can be found in the url https://www.facebook.com/" + '\033[1m' + "<page_id>"+'\033[0m'+")")
+    print("- Cookies to connect to facebook, you can find instruction into the README.md file")
     print("\nDo you want to proceed? [Y/n]")
     proceed = input()
     if proceed=='n':
@@ -24,7 +26,7 @@ def setup():
         chat_id = input()
         if chat_id[0] == '@':
             chat_id = chat_id[1:]
-        f.writelines(["TOKEN = '"+TOKEN+"'"+'\n', "chat_id = '@"+ chat_id +"'"])
+        f.writelines(["TOKEN = '"+TOKEN+"'"+'\n', "chat_id = '@"+ chat_id +"'\n"])
     with open('pages.csv','w') as f:
         csv_writer = csv.DictWriter(f, fields)
         csv_writer.writeheader()
@@ -35,8 +37,20 @@ def setup():
             row['page_tag'] = input()
             print("What name you want to associate to this page?:")
             row['page_name'] = input()
-            row['last_post_used'] = 0
+            print("Please wait while retrieving page info...")
+            posts = list(get_posts(row['page_tag'], pages=3, cookies='cookies.txt'))
+            if len(posts) > 1:
+                if (int(posts[0]['post_id']) > int(posts[1]['post_id'])):
+                    row['last_post_used'] = posts[0]['post_id']
+                else:
+                    # first post is a pinned one
+                    row['last_post_used'] = posts[1]['post_id']
+            elif len(posts) == 1:
+                row['last_post_used'] = posts[0]['post_id']
+            else:
+                row['last_post_used'] = 0
             csv_writer.writerow(row)
+            print("...done.")
             print("Do you want to add another page? [y/n]:")
             while True:
                 c = input()
@@ -56,8 +70,20 @@ def add_pages():
             row['page_tag'] = input()
             print("What name you want to associate to this page?:")
             row['page_name'] = input()
-            row['last_post_used'] = 0
+            print("Please wait while retrieving page info...")
+            posts = list(get_posts(row['page_tag'], pages=3, cookies='cookies.txt'))
+            if len(posts) > 1:
+                if (int(posts[0]['post_id']) > int(posts[1]['post_id'])):
+                    row['last_post_used'] = posts[0]['post_id']
+                else:
+                    # first post is a pinned one
+                    row['last_post_used'] = posts[1]['post_id']
+            elif len(posts) == 1:
+                row['last_post_used'] = posts[0]['post_id']
+            else:
+                row['last_post_used'] = 0
             csv_writer.writerow(row)
+            print("...done.")
             print("Do you want to add another page? [y/n]:")
             while True:
                 c = input()

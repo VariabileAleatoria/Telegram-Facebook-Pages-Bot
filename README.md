@@ -6,10 +6,6 @@ Every post has this structure:
 [Text] (if present)  
 [Signature] (with a name associated to the page by the user)  
 
-# WARNING
-Since facebook-scraper is not able to return reliable timestamp for posts, this bot is currently relying on the assumption that posts ids always grow, if suddenly new posts will start having ids with values smaller then previous ones then the bot will stop forwarding posts to the channel.  
-This check should be probably done in a smarter way, any contribution is much appreciated.
-
 ## Usage
 ### Automatic setup
 Just run `setup.py`
@@ -30,6 +26,8 @@ Follow [these instructions](https://github.com/kevinzg/facebook-scraper/issues/2
 - image galleries *
 - video *
 
+\* if present text will be used as caption
+
 Shares don't work.
 
 ## Module needed
@@ -40,5 +38,9 @@ Shares don't work.
 
 ```
 page_name,page_tag,last_post_used
-Facebook Page,facebook,2020-01-11 17:39:56
+Facebook Page,facebook,284507553110844
 ```
+
+## Warning
+Since facebook-scraper is not able to return reliable timestamp for posts, this bot is currently relying on the assumption that posts ids always grow, if suddenly new posts will start having ids with values smaller then previous ones then the bot will stop forwarding posts to the channel.  
+This check should be probably done in a smarter way, any contribution is much appreciated.
