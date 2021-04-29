@@ -41,6 +41,8 @@ page_name,page_tag,last_post_used
 Facebook Page,facebook,284507553110844
 ```
 
-## Warning
-Since facebook-scraper is not able to return reliable timestamp for posts, this bot is currently relying on the assumption that posts ids always grow, if suddenly new posts will start having ids with values smaller then previous ones then the bot will stop forwarding posts to the channel.  
-This check should be probably done in a smarter way, any contribution is much appreciated.
+## Warnings and known issues
+- Since facebook-scraper is not able to return reliable timestamp for posts, this bot is currently relying on the assumption that posts ids always grow, if suddenly new posts will start having ids with values smaller then previous ones then the bot will stop forwarding posts to the channel.  
+This check should be probably done in a smarter way, any contribution is much appreciated.  
+- Scraper can return low quality images.  
+- Error handling is missing
