@@ -28,7 +28,7 @@ Follow [these instructions](https://github.com/kevinzg/facebook-scraper/issues/2
 
 \* if present text will be used as caption
 
-Shares don't work.
+Shares work partially.
 
 ## Module needed
 [python-telegram-bot](https://github.com/python-telegram-bot/python-telegram-bot)  
@@ -44,5 +44,5 @@ Facebook Page,facebook,284507553110844
 ## Warnings and known issues
 - Since facebook-scraper is not able to return reliable timestamp for posts, this bot is currently relying on the assumption that posts ids always grow, if suddenly new posts will start having ids with values smaller then previous ones then the bot will stop forwarding posts to the channel.  
 This check should be probably done in a smarter way, any contribution is much appreciated.  
-- Scraper can return low quality images.  
+- Scraper can return low quality images when using cookies (I have already pointed that out to its devs).  
 - Error handling is missing
