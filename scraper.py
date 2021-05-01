@@ -18,7 +18,7 @@ chat_id = config.chat_id
 
 fields = ['page_name', 'page_tag', 'last_post_used']
 
-WAIT_SECONDS = 300
+WAIT_SECONDS = 600
 
 def check():
     with open('pages.csv', mode='r+') as csv_file, NamedTemporaryFile(mode='w', delete=False) as tempfile:
