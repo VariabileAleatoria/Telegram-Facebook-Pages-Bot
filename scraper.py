@@ -9,6 +9,7 @@ import shutil
 import config
 import time
 import sys
+import traceback
 
 TOKEN = config.TOKEN
 bot = telegram.Bot(TOKEN)
@@ -30,8 +31,8 @@ def check():
                 posts = list(get_posts(page['page_tag'], pages=2, cookies='cookies.txt'))
             except OSError as err:
                 print("Got an exception while trying to retrieve posts")
-                print(str(err))
-                if err.errno == 101:
+                traceback.print_exc()
+                if err.errno == 101 or err.errno == 500:
                     print("Network unreachable, waiting 5 minutes")
                     time.sleep(300)
                     break
