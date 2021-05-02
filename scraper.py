@@ -42,7 +42,10 @@ def check():
             for post in posts:
                 if int(post['post_id']) <= int(page['last_post_used']): # post already sent to channel
                     continue
-                if post['images'] is not None:
+                if post['shared_post_url'] is not None:
+                    # TODO This post is a share will work on this on future
+                    continue
+                elif post['images'] is not None:
                     images = [telegram.InputMediaPhoto(post['images'][0], caption=(post['text'] if post['text'] else '') + '\n[' + page['page_name'] + ']')]
                     for image in post['images'][1:]:
                         images.append(telegram.InputMediaPhoto(image))
