@@ -43,17 +43,19 @@ def check():
                 if int(post['post_id']) <= int(page['last_post_used']): # post already sent to channel
                     continue
                 if post['shared_post_url'] is not None:
-                    # TODO This post is a share will work on this on future
-                    continue
-                elif post['images'] is not None:
-                    images = [telegram.InputMediaPhoto(post['images'][0], caption=(post['text'] if post['text'] else '') + '\n[' + page['page_name'] + ']')]
+                    text = post['shared_text']
+                    message = u'\U0001F501' + ' ' + post['shared_username'] + '\n' + ('_' +text[text.find('\n',text.find('\n')+1)+2:] + '_' if post['shared_text'] else '') + '\n\n' + (post['post_text'] if post['post_text'] else '') + '\n\[' + page['page_name'] + '\]'
+                else:
+                    message = (post['text'] if post['text'] else '') + '\n[' + page['page_name'] + ']'
+                if post['images'] is not None:
+                    images = [telegram.InputMediaPhoto(post['images'][0], caption=message, parse_mode=telegram.constants.PARSEMODE_MARKDOWN_V2)]
                     for image in post['images'][1:]:
                         images.append(telegram.InputMediaPhoto(image))
                     bot.send_media_group(chat_id, images)
                 elif post['video'] is not None:
-                    bot.send_video(chat_id, post['video'], caption=(post['text'] if post['text'] else '') + '\n[' + page['page_name'] + ']')
+                    bot.send_video(chat_id, post['video'], caption=message)
                 elif post['text'] is not None:
-                    bot.send_message(chat_id, (post['text'] if post['text'] else '')+ '\n[' + page['page_name'] + ']')
+                    bot.send_message(chat_id, message, parse_mode=telegram.constants.PARSEMODE_MARKDOWN_V2)
             if len(posts) != 0: 
                 # according to facebook-scraper devs you can get 0 posts if
                 # you get temporarily ip banned for too many requests 
