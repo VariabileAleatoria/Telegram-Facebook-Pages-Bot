@@ -18,7 +18,7 @@ The first column is the **page name**, you can set it to whatever you want but i
 The second name is the **page tag**, this must me the name of the page you can find in the URL with the broswer, this is what the bot actually needs to get posts from the pages.  
 The last column is the **last post used**, that is the id of the last post retrieved by the bot, and will be changed by it at runtime.  
 **Be careful** to set it properly the first time, because the bot will try to retrieve all the posts which were published after that one.    
-Follow [these instructions](https://github.com/kevinzg/facebook-scraper/issues/28#issuecomment-793066983) to extract cookies and save them as `cookies.txt` in the same folder of `scraper.py` (set your language to english before exporting cookies to avoid gettin low quality images)
+Follow [these instructions](https://github.com/kevinzg/facebook-scraper/issues/28#issuecomment-793066983) to extract cookies and save them as `cookies.txt` in the same folder of `scraper.py` (set your language to english before exporting cookies to avoid getting low quality images)
 
 
 ## What's working
@@ -43,7 +43,16 @@ Facebook Page,facebook,284507553110844
 ```
 
 ## Warnings and known issues
-- Since facebook-scraper is not able to return reliable timestamp for posts, this bot is currently relying on the assumption that posts ids always grow, if suddenly new posts will start having ids with values smaller then previous ones then the bot will stop forwarding posts to the channel.  
+
+### Image quality
+Scraper will return low quality images when using cookies if language on facebook is not set to **english**, that's because there is a regex looking for "View full size". Be sure to switch language to english before exporting cookies.  
+
+### Post sorting
+Since facebook-scraper is not able to return reliable timestamp for posts, this bot is currently relying on the assumption that posts ids always grow, if suddenly new posts will start having ids with values smaller then previous ones then the bot will stop forwarding posts to the channel.  
 This check should be probably done in a smarter way, any contribution is much appreciated.  
-- Scraper can return low quality images when using cookies (apparently if language on facebook is set to english this doesn't happen).  
-- Error handling is missing
+
+### Error handling
+I'm new to python and I find it harder then Java to handle errors, will try to work on it.
+
+### Post shares
+Post shared by pages are currently not supported by this bot, I'm facing some unexpected behaviour like images not being extracted  
