@@ -26,10 +26,10 @@ Follow [these instructions](https://github.com/kevinzg/facebook-scraper/issues/2
 - image post *
 - image galleries *
 - video *
+- shared posts
 
 \* if present text will be used as caption
 
-Shares work partially.
 
 ## Module needed
 [python-telegram-bot](https://github.com/python-telegram-bot/python-telegram-bot)  
@@ -53,6 +53,3 @@ This check should be probably done in a smarter way, any contribution is much ap
 
 ### Error handling
 I'm new to python and I find it harder then Java to handle errors, will try to work on it.
-
-### Post shares
-Post shared by pages are currently not supported by this bot, I'm facing some unexpected behaviour like images not being extracted  
