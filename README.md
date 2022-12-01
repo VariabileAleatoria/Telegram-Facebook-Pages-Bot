@@ -52,4 +52,4 @@ Since facebook-scraper is not able to return reliable timestamp for posts, this 
 This check should be probably done in a smarter way, any contribution is much appreciated.  
 
 ### Error handling
-I'm new to python and I find it harder then Java to handle errors, will try to work on it.
+Error handling is done in a sketchy way, should be improved

@@ -24,7 +24,6 @@ def check():
     with open('pages.csv', mode='r+') as csv_file, NamedTemporaryFile(mode='w', delete=False) as tempfile:
         csv_reader = csv.DictReader(csv_file)
         csv_writer = csv.DictWriter(tempfile, fields)
-        line_count = 0
         csv_writer.writeheader()
         for page in csv_reader:
             try:
@@ -63,7 +62,7 @@ def check():
                 page['last_post_used'] = posts[-1]['post_id']
             row = {'page_name': page['page_name'], 'page_tag': page['page_tag'], 'last_post_used': page['last_post_used']}
             csv_writer.writerow(row)
-        shutil.move(tempfile.name, 'pages.csv')
-        threading.Timer(WAIT_SECONDS, check).start()
+    shutil.move(tempfile.name, 'pages.csv')
+    threading.Timer(WAIT_SECONDS, check).start()
 
 check()
